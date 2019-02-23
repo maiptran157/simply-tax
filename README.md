@@ -1,2 +1,2 @@
 # Simply Tax
-This porject is a React web app for Simply Tax services.
+This project is a React web app for Simply Tax services.
