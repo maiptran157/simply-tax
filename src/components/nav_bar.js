@@ -1,12 +1,21 @@
 import M from 'materialize-css';
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import servicesData from '../data/services_data';
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
+        this.checkIfActice = this.checkIfActice.bind(this);
+    }
+
     componentDidMount() {
         let elems = document.querySelectorAll('.dropdown-trigger');
         M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
+    }
+
+    checkIfActice(pathname) {
+        return this.props.location.pathname.includes(pathname) ? "active" : null;
     }
 
     render() {
@@ -25,7 +34,7 @@ class NavBar extends Component {
                 <div className="nav-wrapper #1e88e5 blue darken-1">
                     <Link to="/" className="brand-logo">Simply Tax</Link>
                     <ul className="right hide-on-med-and-down">
-                        <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Services<i className="material-icons right">arrow_drop_down</i></a></li>
+                        <li className={this.checkIfActice("/services")}><a className="dropdown-trigger" href="#!" data-target="dropdown1">Services<i className="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="#!">Industries</a></li>
                         <li><a href="#!">Reports</a></li>
                         <li><a href="#!">Archives</a></li>
@@ -36,4 +45,4 @@ class NavBar extends Component {
     }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
