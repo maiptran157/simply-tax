@@ -1,13 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import ProductDesc from '../helpers/product_desc';
+import servicesData from '../data/services_data';
 
-export default function () {
-    return <div className="s12 m8 row">
-        <h2><Link to="/services">Services</Link> > Accounting</h2>
-        <hr />
-        <ul>
-            <li>General bookkeeping services</li>
-            <li>Customized Reporting Services for small, medium- sized and large business</li>
-        </ul>
-    </div>
+export default class ServicesAccounting extends Component {
+    render() {
+        return <ProductDesc to={servicesData.to} mainDir={servicesData.mainDir} serviceName={servicesData.accounting.serviceName} serviceDetail={servicesData.accounting.serviceDetail} />
+    }
 }
